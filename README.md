@@ -1,26 +1,25 @@
 # 🛡️ Custom Admin URL Protector for WordPress
 
 [![WordPress Version](https://img.shields.io/badge/WordPress-7.x%20Ready-blue.svg?logo=wordpress&logoColor=white)](https://wordpress.org)
-[![PHP Version](https://img.shields.io/badge/PHP-7.4%20%7C%208.x-777BB4.svg?logo=php&logoColor=white)](https://www.php.net)
+[![PHP Version](https://img.shields.io/badge/PHP-8.0%2B-777BB4.svg?logo=php&logoColor=white)](https://www.php.net)
 [![License](https://img.shields.io/badge/License-GPLv2-green.svg)](https://www.gnu.org/licenses/gpl-2.0.html)
 [![Multisite Compatible](https://img.shields.io/badge/Multisite-Supported-orange.svg)](#-compatibilidad-multisite)
-[![Latest Release](https://img.shields.io/badge/Version-1.3.0-brightgreen.svg)](https://github.com)
+[![Latest Release](https://img.shields.io/badge/Version-1.5.0-brightgreen.svg)](https://github.com)
 
-**Custom Admin URL Protector** es un plugin liviano, altamente seguro y eficiente diseñado para ocultar los puntos de entrada predeterminados de WordPress (`wp-login.php` y `/wp-admin/`), con **soporte completo para WordPress 7.x y PHP 8.x**.
+**Custom Admin URL Protector** es un plugin liviano, altamente seguro y eficiente diseñado para ocultar los puntos de entrada predeterminados de WordPress (`wp-login.php` y `/wp-admin/`).
 
-Sustituye las rutas por defecto con un **slug secreto y personalizado** definido por el administrador (ej. `tuweb.com/mi-panel-secreto`), bloqueando de forma proactiva ataques de fuerza bruta y escaneos automatizados al devolver un código de respuesta **HTTP 404 Not Found**.
+Sustituye las rutas por defecto con un **slug secreto y personalizado** definido de forma interactiva por el administrador (ej. `tuweb.com/mi-panel-secreto`), bloqueando de forma proactiva ataques de fuerza bruta y escaneos automatizados.
 
 ---
 
 ## 🌟 Características Destacadas
 
-- 🚀 **WordPress 7.x Ready:** Totalmente verificado y optimizado para el núcleo de WordPress 7.x y PHP 8.x.
-- 🔑 **Slug de Acceso Personalizado:** Configura una ruta única y secreta para iniciar sesión.
-- 🚫 **Respuesta 404 Estándar:** Oculta la presencia de WordPress ante escáneres devolviendo la plantilla 404 nativa del tema.
-- 🌐 **Soporte Nativo Multisite:** Administra la ruta secreta a nivel individual o centralizada en el *Network Admin*.
-- 📝 **Registro de Auditoría de Seguridad:** Registra cada intento de acceso denegado en los logs del servidor con la IP y el `User-Agent`.
-- 📧 **Alertas por Correo Electrónico:** Envía una notificación inmediata al administrador cada vez que se actualiza el slug de acceso.
-- 🚨 **Recuperación de Emergencia:** Pausa la protección de forma segura añadiendo la constante `CUSTOM_ADMIN_URL_DISABLE` en `wp-config.php`.
+- 🎛️ **Módulo Admin Interactivo con Pestañas:** Cambia el slug de acceso en tiempo real, prueba URLs y copia la dirección directamente al portapapeles.
+- 📋 **Historial de Logs Integrado:** Pestaña dedicada dentro del panel de WordPress para revisar los intentos de acceso no autorizados (IP, hora, User-Agent y ruta) con opción para vaciar los registros.
+- ✉️ **Notificaciones por Correo Personalizables:** Edita el asunto y el cuerpo del mensaje utilizando variables dinámicas (`{site_name}`, `{new_url}`, `{date_time}`, `{ip_address}`).
+- 🛑 **Acción de Bloqueo Configurable:** Elige responder con una página **404 Not Found** o realizar una redirección 302 a la portada del sitio.
+- 🌐 **Soporte Nativo Multisite:** Administra la ruta secreta a nivel de sitio individual o de forma centralizada en el *Network Admin*.
+- 🚨 **Recuperación de Emergencia:** Pausa la protección de forma segura añadiendo `define( 'CUSTOM_ADMIN_URL_DISABLE', true );` en `wp-config.php`.
 - 🧹 **Desinstalación 100% Limpia:** Cumple con el estándar `uninstall.php`, eliminando todas las opciones guardadas en la base de datos sin dejar rastro.
 
 ---
@@ -29,26 +28,27 @@ Sustituye las rutas por defecto con un **slug secreto y personalizado** definido
 
 | Requisito | Versión Mínima / Recomendada |
 | :--- | :--- |
-| **WordPress** | 6.0 o superior (**Totalmente compatible con WordPress 7.x**) |
-| **PHP** | 7.4, 8.0, 8.1, 8.2 o superior |
+| **WordPress** | 6.0 o superior (probado en **WordPress 7.x**) |
+| **PHP** | 8.0 o superior |
 | **Arquitectura** | Sitio independiente o Red Multisite |
-| **Licencia** | MIT |
+| **Licencia** | GPLv2 o posterior |
 
 ---
 
-## 🚀 Instalación y Configuración
+## 🖥️ Módulo de Administración (Pestañas)
 
-### 1. Instalación
-1. Descarga el archivo comprimido [`custom-admin-url.zip`](./custom-admin-url.zip).
-2. Dirígete a tu panel de WordPress: **Plugins > Añadir nuevo > Subir plugin**.
-3. Selecciona el archivo `.zip` y presiona **Instalar ahora**.
-4. Haz clic en **Activar plugin**.
+### 1. ⚙️ Ajustes Generales
+- Cambio interactivo del slug de acceso.
+- Selector de acción ante bloqueos (404 vs Redirección Home).
+- Campo con botón **📋 Copiar URL** y badge de estado en vivo.
 
-### 2. Configuración del Slug
-1. Ve a **Ajustes > URL de Administración** (o *Ajustes de la Red* en Multisite).
-2. Introduce tu slug personalizado (ejemplo: `acceso-privado-2026`).
-3. Guarda los cambios.
-4. **¡Importante!** Añade inmediatamente la nueva URL a los marcadores de tu navegador.
+### 2. ✉️ Notificaciones por Correo
+- Personalización completa del correo electrónico enviado tras actualizar la URL secreta.
+- Soporte para etiquetas automáticas: `{site_name}`, `{new_url}`, `{date_time}`, `{ip_address}`.
+
+### 3. 📋 Historial de Logs
+- Tabla detallada con los últimos 100 intentos de acceso bloqueados.
+- Botón para vaciar el historial con confirmación de seguridad.
 
 ---
 
@@ -65,95 +65,15 @@ Sustituye las rutas por defecto con un **slug secreto y personalizado** definido
 
 ---
 
-## 🔒 Reglas Opcionales a Nivel de Servidor Web
-
-Para rechazar solicitudes no autorizadas en la capa de red antes de ejecutar PHP, puedes agregar las siguientes reglas según tu servidor web:
-
-<details>
-<summary><b>Ver reglas para Apache (.htaccess)</b></summary>
-
-```apache
-<IfModule mod_rewrite.c>
-RewriteEngine On
-RewriteBase /
-
-# Mapear el slug secreto a wp-login.php
-RewriteRule ^mi-acceso-secreto/?$ /wp-login.php [QSA,L]
-
-# Bloquear acceso directo a wp-login.php
-RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /wp-login\.php [NC]
-RewriteCond %{QUERY_STRING} !^action=logout [NC]
-RewriteRule ^wp-login\.php$ - [R=404,L]
-</IfModule>
-```
-</details>
-
-<details>
-<summary><b>Ver reglas para Nginx (nginx.conf)</b></summary>
-
-```nginx
-# Mapear slug secreto
-location = /mi-acceso-secreto {
-    include fastcgi_params;
-    fastcgi_param SCRIPT_FILENAME $document_root/wp-login.php;
-    fastcgi_pass 127.0.0.1:9000;
-}
-
-# Bloquear acceso directo a wp-login.php
-location = /wp-login.php {
-    if ($request_uri ~* "^/wp-login\.php") {
-        return 404;
-    }
-    include fastcgi_params;
-    fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-    fastcgi_pass 127.0.0.1:9000;
-}
-```
-</details>
-
----
-
-## ❓ Preguntas Frecuentes (FAQ)
-
-<details>
-<summary><b>¿Es compatible con WordPress 7.x y PHP 8.x?</b></summary>
-Sí. El plugin se probó y optimizó para garantizar compatibilidad total con WordPress 7.x y las últimas versiones de PHP 8.
-</details>
-
-<details>
-<summary><b>¿Afecta el rendimiento del sitio web?</b></summary>
-No. El plugin es ultraliviano y solo ejecuta sus verificaciones durante la inicialización de peticiones administrativas (hook <code>init</code>), sin afectar el rendimiento del frontend para los visitantes.
-</details>
-
-<details>
-<summary><b>¿Es compatible con WordPress Multisite?</b></summary>
-Sí. Puedes activarlo a nivel de red y administrar la URL secreta centralizadamente desde el menú <i>Network Admin</i>.
-</details>
-
-<details>
-<summary><b>¿Qué sucede al desinstalar el plugin?</b></summary>
-El script <code>uninstall.php</code> borra automáticamente las opciones registradas en <code>wp_options</code> / <code>wp_sitemeta</code> y limpia las reglas de reescritura de WordPress.
-</details>
-
----
-
 ## 📜 Historial de Cambios (Changelog)
 
+- **v1.5.0**
+  - Interfaz de administración enriquecida con pestañas navegables.
+  - Pestaña de historial de registros de eventos de seguridad (logs) directamente en el panel con función de vaciado.
+  - Plantilla de correo electrónico personalizable con etiquetas dinámicas.
+  - Selector interactivo de respuesta ante accesos no autorizados (404 Not Found vs. Redirección a Portada).
+  - Botón de copiado rápido al portapapeles y visualizador de estado en vivo.
 - **v1.3.0**
-  - Compatibilidad probada y optimizada para WordPress 7.x y PHP 8.x.
-  - Actualización de cabeceras, ganchos de rendimiento y estándares de codificación WPCS.
+  - Compatibilidad oficial declarada para WordPress 7.x y PHP 8.x.
 - **v1.2.0**
   - Compatibilidad completa con WordPress Multisite (*Network Admin*).
-  - Soporte mejorado para instalaciones en subdirectorios.
-  - Excepciones avanzadas para endpoints internos (`admin-ajax.php`, `admin-post.php`).
-- **v1.1.0**
-  - Registro de auditoría de seguridad (`error_log`) con IP y `User-Agent`.
-  - Notificaciones automáticas por correo electrónico tras modificar el slug.
-- **v1.0.0**
-  - Lanzamiento inicial del plugin.
-
----
-
-<p align="center">
-  Desarrollado siguiendo los <b>WordPress Coding Standards (WPCS)</b> y buenas prácticas de seguridad.
-</p>
