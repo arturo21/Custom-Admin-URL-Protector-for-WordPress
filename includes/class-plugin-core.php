@@ -1,7 +1,7 @@
 <?php
 /**
  * Lógica principal de protección, interceptación de URLs y registro de eventos de seguridad.
- * Compatible con WordPress Multisite e instalaciones en subdirectorios.
+ * Compatible con WordPress 7.x, WordPress Multisite e instalaciones en subdirectorios.
  *
  * @package CustomAdminUrl
  */

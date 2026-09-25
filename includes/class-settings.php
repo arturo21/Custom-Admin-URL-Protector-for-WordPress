@@ -1,6 +1,6 @@
 <?php
 /**
- * Panel de ajustes e interfaz de usuario (compatible con Multisite).
+ * Panel de ajustes e interfaz de usuario (compatible con WordPress 7.x y Multisite).
  *
  * @package CustomAdminUrl
  */

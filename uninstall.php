@@ -1,6 +1,7 @@
 <?php
 /**
  * Limpieza de datos en sitios individuales y redes Multisite al desinstalar.
+ * Compatible con WordPress 7.x.
  *
  * @package CustomAdminUrl
  */

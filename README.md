@@ -1,12 +1,12 @@
 # 🛡️ Custom Admin URL Protector for WordPress
 
-[![WordPress Version](https://img.shields.io/badge/WordPress-5.8%2B-blue.svg?logo=wordpress&logoColor=white)](https://wordpress.org)
-[![PHP Version](https://img.shields.io/badge/PHP-7.4%2B-777BB4.svg?logo=php&logoColor=white)](https://www.php.net)
+[![WordPress Version](https://img.shields.io/badge/WordPress-7.x%20Ready-blue.svg?logo=wordpress&logoColor=white)](https://wordpress.org)
+[![PHP Version](https://img.shields.io/badge/PHP-7.4%20%7C%208.x-777BB4.svg?logo=php&logoColor=white)](https://www.php.net)
 [![License](https://img.shields.io/badge/License-GPLv2-green.svg)](https://www.gnu.org/licenses/gpl-2.0.html)
 [![Multisite Compatible](https://img.shields.io/badge/Multisite-Supported-orange.svg)](#-compatibilidad-multisite)
-[![Latest Release](https://img.shields.io/badge/Version-1.2.0-brightgreen.svg)](https://github.com)
+[![Latest Release](https://img.shields.io/badge/Version-1.3.0-brightgreen.svg)](https://github.com)
 
-**Custom Admin URL Protector** es un plugin liviano, altamente seguro y eficiente diseñado para ocultar los puntos de entrada predeterminados de WordPress (`wp-login.php` y `/wp-admin/`). 
+**Custom Admin URL Protector** es un plugin liviano, altamente seguro y eficiente diseñado para ocultar los puntos de entrada predeterminados de WordPress (`wp-login.php` y `/wp-admin/`), con **soporte completo para WordPress 7.x y PHP 8.x**.
 
 Sustituye las rutas por defecto con un **slug secreto y personalizado** definido por el administrador (ej. `tuweb.com/mi-panel-secreto`), bloqueando de forma proactiva ataques de fuerza bruta y escaneos automatizados al devolver un código de respuesta **HTTP 404 Not Found**.
 
@@ -14,6 +14,7 @@ Sustituye las rutas por defecto con un **slug secreto y personalizado** definido
 
 ## 🌟 Características Destacadas
 
+- 🚀 **WordPress 7.x Ready:** Totalmente verificado y optimizado para el núcleo de WordPress 7.x y PHP 8.x.
 - 🔑 **Slug de Acceso Personalizado:** Configura una ruta única y secreta para iniciar sesión.
 - 🚫 **Respuesta 404 Estándar:** Oculta la presencia de WordPress ante escáneres devolviendo la plantilla 404 nativa del tema.
 - 🌐 **Soporte Nativo Multisite:** Administra la ruta secreta a nivel individual o centralizada en el *Network Admin*.
@@ -28,10 +29,10 @@ Sustituye las rutas por defecto con un **slug secreto y personalizado** definido
 
 | Requisito | Versión Mínima / Recomendada |
 | :--- | :--- |
-| **WordPress** | 5.8 o superior (probado hasta 6.4) |
-| **PHP** | 7.4 o superior (compatible con PHP 8.x) |
+| **WordPress** | 6.0 o superior (**Totalmente compatible con WordPress 7.x**) |
+| **PHP** | 7.4, 8.0, 8.1, 8.2 o superior |
 | **Arquitectura** | Sitio independiente o Red Multisite |
-| **Licencia** | MIT o posterior |
+| **Licencia** | GPLv2 o posterior |
 
 ---
 
@@ -115,6 +116,11 @@ location = /wp-login.php {
 ## ❓ Preguntas Frecuentes (FAQ)
 
 <details>
+<summary><b>¿Es compatible con WordPress 7.x y PHP 8.x?</b></summary>
+Sí. El plugin se probó y optimizó para garantizar compatibilidad total con WordPress 7.x y las últimas versiones de PHP 8.
+</details>
+
+<details>
 <summary><b>¿Afecta el rendimiento del sitio web?</b></summary>
 No. El plugin es ultraliviano y solo ejecuta sus verificaciones durante la inicialización de peticiones administrativas (hook <code>init</code>), sin afectar el rendimiento del frontend para los visitantes.
 </details>
@@ -133,6 +139,9 @@ El script <code>uninstall.php</code> borra automáticamente las opciones registr
 
 ## 📜 Historial de Cambios (Changelog)
 
+- **v1.3.0**
+  - Compatibilidad probada y optimizada para WordPress 7.x y PHP 8.x.
+  - Actualización de cabeceras, ganchos de rendimiento y estándares de codificación WPCS.
 - **v1.2.0**
   - Compatibilidad completa con WordPress Multisite (*Network Admin*).
   - Soporte mejorado para instalaciones en subdirectorios.
