@@ -31,7 +31,7 @@ Sustituye las rutas por defecto con un **slug secreto y personalizado** definido
 | **WordPress** | 5.8 o superior (probado hasta 6.4) |
 | **PHP** | 7.4 o superior (compatible con PHP 8.x) |
 | **Arquitectura** | Sitio independiente o Red Multisite |
-| **Licencia** | GPLv2 o posterior |
+| **Licencia** | MIT o posterior |
 
 ---
 
